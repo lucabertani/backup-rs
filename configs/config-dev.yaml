@@ -2,6 +2,8 @@ dropbox:
   api_key: dropbox_api_key_here
   token: dropbox_token_here (will be generated the first time you run the application)
 
+archive_folder: archive
+
 folders:
   - path: dockers/test1
     exclude_folders:

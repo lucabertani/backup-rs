@@ -12,11 +12,11 @@ pub mod app_config;
 pub mod configuration;
 pub mod dropbox;
 
-static ARCHIVE_DIR: &str = "archive";
-
-pub fn compress_and_archive(folder_config: &FolderConfig) -> anyhow::Result<PathBuf> {
+pub fn compress_and_archive(
+    folder_config: &FolderConfig,
+    archive_dir: &Path,
+) -> anyhow::Result<PathBuf> {
     // Create the archive folder if it doesn't exist
-    let archive_dir = PathBuf::from(ARCHIVE_DIR);
     if !archive_dir.exists() {
         fs::create_dir_all(&archive_dir).with_context(|| "Failed to create archive directory")?;
     }

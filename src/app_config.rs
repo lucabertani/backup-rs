@@ -1,3 +1,5 @@
+use std::path::PathBuf;
+
 use serde::{Deserialize, Serialize};
 
 use crate::configuration::{dropbox_config::DropboxConfig, folder::FolderConfig};
@@ -5,6 +7,7 @@ use crate::configuration::{dropbox_config::DropboxConfig, folder::FolderConfig};
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct AppConfig {
     pub dropbox: DropboxConfig,
+    pub archive_folder: PathBuf,
     pub folders: Vec<FolderConfig>,
 }
 
@@ -36,6 +39,10 @@ impl AppConfig {
 
     pub fn dropbox(&self) -> &DropboxConfig {
         &self.dropbox
+    }
+
+    pub fn archive_folder(&self) -> &PathBuf {
+        &self.archive_folder
     }
 
     pub fn folders(&self) -> &[FolderConfig] {

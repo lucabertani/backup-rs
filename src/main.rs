@@ -47,7 +47,7 @@ async fn main() -> anyhow::Result<()> {
         .with_context(|| format!("Failed to create folder {folder_name}"))?;
 
     for folder_config in app_config.folders() {
-        let archive_path = compress_and_archive(folder_config)?;
+        let archive_path = compress_and_archive(folder_config, app_config.archive_folder())?;
 
         let dropbox_path = format!(
             "{}/{}",
