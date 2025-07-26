@@ -47,6 +47,7 @@ async fn main() -> anyhow::Result<()> {
         .with_context(|| format!("Failed to create folder {folder_name}"))?;
 
     for folder_config in app_config.folders() {
+        println!("Compressing folder: {}", folder_config.path.display());
         let archive_path = compress_and_archive(folder_config, app_config.archive_folder())?;
 
         let dropbox_path = format!(
@@ -60,7 +61,7 @@ async fn main() -> anyhow::Result<()> {
         );
 
         println!(
-            "send archive {} to Dropbox path {}",
+            "Send archive {} to Dropbox path {}",
             archive_path.display(),
             dropbox_path
         );
@@ -70,7 +71,11 @@ async fn main() -> anyhow::Result<()> {
         // delete archive
         std::fs::remove_file(&archive_path)
             .with_context(|| format!("Failed to delete archive file {}", archive_path.display()))?;
+
+        println!("");
     }
+
+    println!("End!");
 
     Ok(())
 }
