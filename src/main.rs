@@ -32,7 +32,7 @@ async fn main() -> anyhow::Result<()> {
         ),
     }
 
-    print!("Connecting to Dropbox... ");
+    println!("Connecting to Dropbox... ");
 
     let app_config = AppConfig::load_from_file(config_path.as_deref());
 
