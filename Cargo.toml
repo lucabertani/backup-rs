@@ -1,0 +1,21 @@
+[package]
+name = "backup-rs"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+anyhow = "1.0.98"
+chrono = "0.4.41"
+dropbox-sdk = "0.19.1"
+serde = { version = "1.0.219", features = ["derive"] }
+serde_yaml = "0.9.34"
+tokio = { version = "1.46.1", features = ["full"] }
+zip = "4.3.0"
+
+[profile.release]
+lto = true
+codegen-units = 1
+
+
+# cross build --release --target=armv7-unknown-linux-gnueabihf
+# cross build --release --target=armv7-unknown-linux-musleabihf
