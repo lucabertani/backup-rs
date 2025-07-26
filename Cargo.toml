@@ -16,6 +16,6 @@ zip = "4.3.0"
 lto = true
 codegen-units = 1
 
-
+# cargo install cross --git https://github.com/cross-rs/cross
 # cross build --release --target=armv7-unknown-linux-gnueabihf
 # cross build --release --target=armv7-unknown-linux-musleabihf
